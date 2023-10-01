@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crossword Puzzle</title>
+<style>
+    body { font-family: Arial, sans-serif; }
+    #nameInput, #continueButton, #crossword, #warning, #completionMessage { display: none; }
+    #crossword input { width: 2em; }
+</style>
+</head>
+<body>
+
+<div id="namePrompt">
+    <label for="nameInput">Enter your name:</label>
+    <input type="text" id="nameInput">
+    <button id="continueButton" onclick="startCrossword()">Continue</button>
+</div>
+
+<div id="crossword">
+    <!-- Crossword structure here -->
+    <!-- This is a simplified structure and doesn't align with your specific crossword design -->
+    <div><input type="text" id="0" oninput="checkAnswer(0, 'Frankenstein')"></div>
+    <!-- ... other crossword cells ... -->
+</div>
+
+<div id="warning">Incorrect answer. Try again.</div>
+<div id="completionMessage">Congratulations, you've completed the puzzle!</div>
+
+<script>
+function startCrossword() {
+    var name = document.getElementById('nameInput').value;
+    if (name) {
+        document.getElementById('namePrompt').style.display = 'none';
+        document.getElementById('crossword').style.display = 'block';
+    }
+}
+
+function checkAnswer(cellId, correctAnswer) {
+    var answer = document.getElementById(cellId).value;
+    if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
+        document.getElementById('warning').style.display = 'none';
+        // check if all answers are correct, reveal NUTTER and display completion message
+    } else {
+        document.getElementById('warning').style.display = 'block';
+    }
+}
+</script>
+
+</body>
+</html>
